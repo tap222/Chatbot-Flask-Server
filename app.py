@@ -55,8 +55,12 @@ app = Flask(__name__, template_folder='./')
 
 @app.route('/prediction', methods=['POST', 'GET'])
 def prediction():
-    response =  pred(str(request.json['message']))
-    return jsonify(response)
+    if request.form != None and 'message' in request.form:
+        msg = request.form['message']
+        response =  pred(str(msg))
+    else:
+        print "DEBUG: prediction() GET method was called"
+    return jsonify(response)   
 
 @app.route('/')
 def main():
@@ -64,4 +68,5 @@ def main():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.debug = True
+    app.run()
