@@ -58,13 +58,15 @@ def prediction():
     if request.form != None and 'message' in request.form:
         msg = request.form['message']
         response =  pred(str(msg))
+        return jsonify(response) 
     else:
         return render_template('index.html')
-    return jsonify(response)   
+      
 
-@app.route('/', methods=['GET','POST'])
+@app.route('/')
 def main():
-    return jsonify(response)   
+    return render_template('index.html')
+
 
 if __name__ == '__main__':
     app.debug = True
