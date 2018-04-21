@@ -62,7 +62,7 @@ def prediction():
         return jsonify(response)
     return jsonify(response)   
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def main():
     return render_template('index.html')
 
