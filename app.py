@@ -58,6 +58,8 @@ def prediction():
     if request.form != None and 'message' in request.form:
         msg = request.form['message']
         response =  pred(str(msg))
+    else:
+        return jsonify(response)
     return jsonify(response)   
 
 @app.route('/', methods=['GET', 'POST'])
