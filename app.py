@@ -64,7 +64,7 @@ def prediction():
       
 
 @app.route('/')
-def main():
+def index():
     return render_template('index.html')
 
 
