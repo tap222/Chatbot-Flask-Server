@@ -51,7 +51,9 @@ def pred(inputString):
 
 # webapp
 app = Flask(__name__, template_folder='./')
-
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/prediction', methods=['POST', 'GET'])
 def prediction():
@@ -63,12 +65,6 @@ def prediction():
     else:
         return render_template('index.html')
       
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-
 if __name__ == '__main__':
     app.debug = True
     app.run()
