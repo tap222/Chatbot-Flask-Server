@@ -55,10 +55,11 @@ app = Flask(__name__, template_folder='./')
 
 @app.route('/prediction', methods=['POST', 'GET'])
 def prediction():
-    if request.form != None and 'message' in request.form:
-        msg = request.form['message']
-        response =  pred(str(msg))
-        return jsonify(response) 
+    if request.method == 'POST':
+        if request.form != None and 'message' in request.form:
+            msg = request.form['message']
+            response =  pred(str(msg))
+            return jsonify(response) 
     else:
         return render_template('index.html')
       
