@@ -62,10 +62,9 @@ def prediction():
         return render_template('index.html')
     return jsonify(response)   
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['GET','POST'])
 def main():
-    return render_template('index.html')
-
+    return jsonify(response)   
 
 if __name__ == '__main__':
     app.debug = True
