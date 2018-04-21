@@ -59,10 +59,10 @@ def prediction():
         msg = request.form['message']
         response =  pred(str(msg))
     else:
-        return jsonify(response)
+        return render_template('index.html')
     return jsonify(response)   
 
-@app.route('/')
+@app.route('/', methods=['POST'])
 def main():
     return render_template('index.html')
 
