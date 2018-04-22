@@ -51,19 +51,17 @@ def pred(inputString):
 
 # webapp
 app = Flask(__name__, template_folder='./')
+
+
+@app.route('/prediction', methods=['POST', 'GET'])
+def prediction():
+    response =  pred(str(request.json['message']))
+    return jsonify(response)
+
 @app.route('/')
-def index():
+def main():
     return render_template('index.html')
 
-@app.route('/prediction', methods=['POST'])
-def prediction():
-    if request.form != None and 'message' in request.form:
-        msg = request.form['message']
-        response =  pred(str(msg))
-        return jsonify(response) 
-    else:
-        return render_template('index.html')
-      
+
 if __name__ == '__main__':
-    app.debug = True
-    app.run()
+    app.run(debug=True)
