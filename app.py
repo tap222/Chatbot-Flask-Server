@@ -55,7 +55,7 @@ app = Flask(__name__, template_folder='./')
 def index():
     return render_template('index.html')
 
-@app.route('/prediction', methods=['POST'])
+@app.route('/prediction', methods=['GET'])
 def prediction():
     if request.form != None and 'message' in request.form:
         msg = request.form['message']
